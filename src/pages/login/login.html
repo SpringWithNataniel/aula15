@@ -1,0 +1,32 @@
+<ion-content id="login">
+  <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+    <div class="row responsive-md">
+      <div class="col col-50 col-offset-25">
+
+        <ion-item>
+          <ion-label stacked>Email</ion-label>
+          <ion-input #email formControlName="email" type="email" placeholder="Seu email" [class.invalid]="!loginForm.controls.email.valid && loginForm.controls.email.dirty"></ion-input>
+        </ion-item>
+        <ion-item class="error-message" *ngIf="!loginForm.controls.email.valid  && loginForm.controls.email.dirty">
+          <p>Por favor coloque um email válido.</p>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Senha</ion-label>
+          <ion-input #password formControlName="senha" type="password" placeholder="Sua senha" [class.invalid]="!loginForm.controls.senha.valid && loginForm.controls.senha.dirty"></ion-input>
+        </ion-item>
+        <ion-item class="error-message" *ngIf="!loginForm.controls.senha.valid  && loginForm.controls.senha.dirty">
+          <p>Sua senha precisa conter pelo menos 6 caracteres</p>
+        </ion-item>
+
+        <button ion-button block type="submit">
+        Login
+      </button>
+        <button ion-button block clear (click)="goToSignup()">
+        Criar uma nova conta
+      </button>
+
+      </div>
+    </div>
+  </form>
+</ion-content>
